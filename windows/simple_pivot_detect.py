@@ -34,7 +34,7 @@ if len(pids) > 0:
 						ppid = ll[1].strip()
 						for entry in out.split("\n"):
 							if str(ppid) in entry and "ESTABLISHED" in entry:
-								a = subprocess.Popen('tasklist /fi "pid eq '+ppid+'" | find "'+ppid+'"', shell=True, stdout=subprocess.PIPE)
+								a = subprocess.Popen('tasklist /fi "pid eq '+ str(ppid) +'" | find "'+ str(ppid) +'"', shell=True, stdout=subprocess.PIPE)
 								out, err= a.communicate()
 								out = out.split()[0]
 								alerts.append( "Alert: %s :: %s" % (str(ppid), out))
